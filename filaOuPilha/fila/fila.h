@@ -5,10 +5,10 @@ typedef struct Fila {
     int tamanho;
     int indiceUltimo;
     int* vetor;
-} Fila
+} Fila;
 
 void iniciarFila(Fila* fila, int tamanho);
 void pushFila(Fila* fila, int valor);
-void popFila(Fila* fila);
+int popFila(Fila* fila);
 
 #endif

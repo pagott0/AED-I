@@ -5,7 +5,7 @@ typedef struct Pilha {
     int tamanho;
     int indiceUltimo;
     int* vetor;
-} Pilha
+} Pilha;
 
 void iniciarPilha(Pilha* pilha, int tamanho);
 void push(Pilha* pilha, int valor);

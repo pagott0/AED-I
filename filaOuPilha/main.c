@@ -12,63 +12,48 @@ int main() {
     int numeroCasos;
     scanf("%d", &numeroCasos);
 
-    int numeroOperacoes[numeroCasos];
-    for(int i = 0; i < numeroCasos; i++){
-        scanf("%d", &numeroOperacoes[i]);
+    for (int i = 0; i < numeroCasos; i++) {
+        struct possibilidades casosPosiveis = {1, 1};
+        int numeroOperacoes;
+        scanf("%d", &numeroOperacoes);
 
         Fila fila;
         Pilha pilha;
         
-        iniciarFila(&pilha, numeroOperacoes[i]);
-        iniciarPilha(&fila, numeroOperacoes[i]);
+        iniciarFila(&fila, numeroOperacoes);
+        iniciarPilha(&pilha, numeroOperacoes);
 
-        struct possibilidades possibilidades = { 1, 1 };
-
-        for(int j = 0; j < numeroOperacoes[j]; j++) {
-            char temp;
-            scanf("%c", &temp);
-
-            if(temp == ' ') {
-                j--;
-                continue;
-            }
-
+        for (int j = 0; j < numeroOperacoes; j++) {
+            char operacao;
             int valor;
-            scanf("%d", &valor);
+            scanf(" %c %d", &operacao, &valor);
 
-            if(temp == 'i'){
+            if (operacao == 'i') {
                 push(&pilha, valor);
                 pushFila(&fila, valor);
-            }
-            else {
-                int valorRemovidoPilha = pop(&stack);
+            } else {
+                int valorRemovidoPilha = pop(&pilha);
                 int valorRemovidoFila = popFila(&fila);
 
-                if(valorRemovidoPilha != valor) {
-                    possibilidades.podeSerPilha = 0
+                if (valorRemovidoPilha != valor) {
+                    casosPosiveis.podeSerPilha = 0;
                 }
-                if(valorRemovidoFila != valor) {
-                    possibilidades.podeSerFila = 0
+                if (valorRemovidoFila != valor) {
+                    casosPosiveis.podeSerFila = 0;
                 }
-
             }
+        }
+
+        if (casosPosiveis.podeSerFila == 1 && casosPosiveis.podeSerPilha == 1) {
+            printf("indefinido\n");
+        } else if (casosPosiveis.podeSerFila == 1) {
+            printf("fila\n");
+        } else if (casosPosiveis.podeSerPilha == 1) {
+            printf("pilha\n");
+        } else {
+            printf("impossivel\n");
         }
     }
 
-    if(possibilidades.podeSerFila == 1 && possibilidades.podeSerPilha == 1) {
-        print("indefinido");
-    } 
-    else if(possibilidades.podeSerFila == 1) {
-        printf("fila");
-    }
-    else if(possibilidades.podeSerPilha == 1) {
-        printf("pilha");
-    }
-    else {
-        printf("impossivel");
-    }
-    printf("\n");
-
     return 0;
-
 }
