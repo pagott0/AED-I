@@ -23,3 +23,14 @@ int pop(Pilha* pilha){
 
     return itemRemovido;
 }
+
+void limparPilha(Pilha* pilha) {
+    // Libera a memória alocada para o vetor
+    free(pilha->vetor);
+    
+    // Reinicializa os valores da pilha
+    pilha->vetor = NULL;
+    pilha->tamanho = 0;
+    pilha->indiceUltimo = -1;
+}
+

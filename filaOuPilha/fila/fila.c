@@ -24,3 +24,13 @@ int popFila(Fila* fila) {
 
     return itemRemovido;
 }
+
+void limparFila(Fila* fila) {
+    // Libera a memória alocada para o vetor
+    free(fila->vetor);
+    
+    // Reinicializa os valores da fila
+    fila->vetor = NULL;
+    fila->tamanho = 0;
+    fila->indiceUltimo = -1;
+}

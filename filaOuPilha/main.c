@@ -44,6 +44,9 @@ int main() {
             }
         }
 
+        limparFila(&fila);
+        limparPilha(&pilha);
+
         if (casosPosiveis.podeSerFila == 1 && casosPosiveis.podeSerPilha == 1) {
             printf("indefinido\n");
         } else if (casosPosiveis.podeSerFila == 1) {

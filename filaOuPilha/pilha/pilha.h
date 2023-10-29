@@ -10,5 +10,6 @@ typedef struct Pilha {
 void iniciarPilha(Pilha* pilha, int tamanho);
 void push(Pilha* pilha, int valor);
 int pop(Pilha* pilha);
+void limparPilha(Pilha* pilha);
 
 #endif
